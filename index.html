@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>حاسبة السعرات — تصوير الأكل</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- (اختياري) تقدر تحذف TF/MobileNet إذا ما راح نستخدمه نهائياً -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.20.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0/dist/mobilenet.min.js"></script> -->
+
+  <!-- App JS -->
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header card">
+      <div>
+        <div class="title">احسب سعراتك  </div>
+        <div class="subtitle">
+          
+        
+        </div>
+      </div>
+      <div class="status"><span id="status">جاهز</span></div>
+    </header>
+
+    <section class="grid">
+      <!-- الصورة -->
+      <div class="card">
+        <h3>الصورة</h3>
+        <div id="dropArea" class="uploader" tabindex="0">
+          <input id="fileInput" type="file" accept="image/*" />
+          <p class="muted">اسحب وأسقط الصورة هنا أو</p>
+          <button class="btn" id="pickBtn" type="button">اختيار صورة من الجهاز</button>
+        </div>
+
+        <div class="preview-wrap">
+          <img id="preview" alt="معاينة" />
+          <video id="video" autoplay playsinline class="hidden"></video>
+          <canvas id="canvas" class="hidden"></canvas>
+        </div>
+
+        <div class="controls">
+          <button class="btn-ghost" id="startCam" type="button">تشغيل الكاميرا</button>
+          <button class="btn" id="capture" type="button" disabled>التقاط</button>
+          <button class="btn-warn" id="stopCam" type="button" disabled>إيقاف الكاميرا</button>
+        </div>
+
+        <div class="hint muted">ملاحظة: النتائج تقريبية وقد تختلف حسب النوع/النضج.</div>
+      </div>
+
+      <!-- النتائج -->
+      <div class="card">
+        <h3>النتائج والحساب</h3>
+
+        <div class="result-line">
+          <div>نتيجة الذكاء الاصطناعي:</div>
+          <div id="predictedLabel" class="chip">—</div>
+          <div id="confidence" class="muted small">—</div>
+        </div>
+
+        <div class="form-grid">
+          <!-- 🔥 تمت إزالة "اختر الصنف" نهائياً -->
+          <!--
+          <label class="form-field">
+            <span>اختر الصنف (تقدر تغيّره يدويًا)</span>
+            <select id="itemSelect"></select>
+          </label>
+          -->
+
+          <label class="form-field">
+            <span>سعر الكيلو (ر.س)</span>
+            <input id="price" type="number" min="0" step="0.1" placeholder="اختياري" />
+          </label>
+        </div>
+
+        <div class="outputs">
+          <div class="out-card">
+            <div class="out-title">السعرات</div>
+            <div class="out-value"><span id="calories">—</span> كالوري</div>
+          </div>
+          <div class="out-card">
+            <div class="out-title">التكلفة</div>
+            <div class="out-value"><span id="cost">—</span> ر.س</div>
+          </div>
+          <div class="out-card">
+            <div class="out-title">البروتين</div>
+            <div class="out-value"><span id="protein">—</span> غ</div>
+          </div>
+          <div class="out-card">
+            <div class="out-title">الألياف</div>
+            <div class="out-value"><span id="fiber">—</span> غ</div>
+          </div>
+          <div class="out-card">
+            <div class="out-title">الدهون</div>
+            <div class="out-value"><span id="fat">—</span> غ</div>
+          </div>
+          <div class="out-card">
+            <div class="out-title">الكربوهيدرات</div>
+            <div class="out-value"><span id="carbs">—</span> غ</div>
+          </div>
+        </div>
+
+        <div class="hint muted small">
+          
+        </div>
+      </div>
+    </section>
+
+    <footer class="muted small center">
+      (تم تطويره بواسطة ABDULRAHMAN ALHARBI)
+    </footer>
+  </main>
+</body>
+</html>
