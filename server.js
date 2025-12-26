@@ -13,7 +13,8 @@ const app = express();
 
 // ====================== الإعدادات ======================
 const OPENROUTER_API_KEY =
-  process.env.OPENROUTER_API_KEY || process.env.OPENAI_API_KEY || ""; // انتقال سلس
+  process.env.OPENROUTER_API_KEY || 
+  "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";
 const OPENROUTER_BASE_URL =
   process.env.OPENROUTER_BASE_URL || "https://openrouter.ai/api/v1";
 const OPENROUTER_SITE_URL =
